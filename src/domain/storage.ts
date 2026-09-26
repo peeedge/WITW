@@ -12,8 +12,18 @@ export interface Settings {
   distanceUnit: "km" | "miles";
 }
 
-const GUESSES_KEY = "tradle-guesses";
-const SETTINGS_KEY = "tradle-settings";
+const GUESSES_KEY = "witw-guesses";
+const SETTINGS_KEY = "witw-settings";
+
+function migrate(key: string, legacy: string): void {
+  if (localStorage.getItem(key) == null) {
+    const old = localStorage.getItem(legacy);
+    if (old != null) localStorage.setItem(key, old);
+  }
+}
+
+migrate(GUESSES_KEY, "tradle-guesses");
+migrate(SETTINGS_KEY, "tradle-settings");
 
 function read<T>(key: string, fallback: T): T {
   try {

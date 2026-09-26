@@ -10,7 +10,7 @@ export default function App() {
   const dayString = useMemo(getDayString, []);
   const [settings, setSettings] = useState<Settings>(loadSettings);
   const [panel, setPanel] = useState<PanelName>(() =>
-    localStorage.getItem("tradle-seen-help") ? null : "help"
+    localStorage.getItem("witw-seen-help") || localStorage.getItem("tradle-seen-help") ? null : "help"
   );
   const [toastMessage, setToastMessage] = useState<{ text: string; sticky: boolean } | null>(null);
   const toastTimer = useRef<number>(undefined);
@@ -31,7 +31,7 @@ export default function App() {
   }, []);
 
   const closePanel = useCallback(() => {
-    localStorage.setItem("tradle-seen-help", "1");
+    localStorage.setItem("witw-seen-help", "1");
     setPanel(null);
   }, []);
 
@@ -42,7 +42,7 @@ export default function App() {
           ?
         </button>
         <h1>
-          TRA<span>D</span>LE
+          Wit<span>W</span>
         </h1>
         <div className="topbar-right">
           <button className="icon-button" onClick={() => setPanel("stats")} aria-label="Statistics">

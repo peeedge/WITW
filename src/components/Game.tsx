@@ -86,7 +86,7 @@ export function Game({ dayString, settings, onSettingsChange, toast }: Props) {
     );
     const url = window.location.origin + window.location.pathname;
     const text = [
-      `#Tradle #${puzzleNumber} ${won ? guesses.length : "X"}/${MAX_TRY_COUNT}`,
+      `#WitW #${puzzleNumber} ${won ? guesses.length : "X"}/${MAX_TRY_COUNT}`,
       ...lines,
       url,
     ].join("\n");
